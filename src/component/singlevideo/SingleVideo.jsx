@@ -3,13 +3,20 @@ import ReactPlayer from "react-player/youtube";
 
 import "../singlevideo/SingleVideo.css";
 import { useVideo } from "../../context/Context";
-import { MdOutlineEditNote, MdPlaylistAdd, MdWatchLater } from "react-icons/md";
+import {
+  MdOutlineEditNote,
+  MdOutlineWatchLater,
+  MdPlaylistAdd,
+  MdWatchLater,
+} from "react-icons/md";
+import { useState } from "react";
 
 export const SingleVideo = () => {
+  const [toggle, setToggle] = useState(false);
   const { videoId } = useParams();
   const navigate = useNavigate();
 
-  const { videoData } = useVideo();
+  const { videoData, dispatch, isPresentInWatchLater, state } = useVideo();
 
   const findVideo = videoData.find(
     (video) => video._id.toString() === videoId.toString()
@@ -30,9 +37,45 @@ export const SingleVideo = () => {
           />
           <h4>{findVideo?.title}</h4>
           <div className="action__btn">
-            <MdWatchLater /> <MdPlaylistAdd /> <MdOutlineEditNote />
+            {isPresentInWatchLater(findVideo._id) ? (
+              <MdWatchLater
+                onClick={() =>
+                  dispatch({
+                    type: "REMOVE_FROM_WATCHLATER",
+                    payload: findVideo._id,
+                  })
+                }
+              />
+            ) : (
+              <MdOutlineWatchLater
+                onClick={() =>
+                  dispatch({ type: "ADD_TO_WATCH_LATER", payload: findVideo })
+                }
+              />
+            )}{" "}
+            <MdPlaylistAdd onClick={() => setToggle(!toggle)} />{" "}
+            <MdOutlineEditNote />
           </div>
         </div>
+
+        {toggle && (
+          <div className="select__playlist">
+            <h3>Add to playlist</h3>
+            {state?.playlistData?.map((play) => (
+              <p
+                onClick={() => {
+                  setToggle(false);
+                  dispatch({
+                    type: "ADD_TO_PLAYLIST",
+                    payload: { findVideo, play },
+                  });
+                }}
+              >
+                {play.name}
+              </p>
+            ))}
+          </div>
+        )}
       </div>
       <div className="suggetion">
         <h1>More Videos</h1>
@@ -40,6 +83,7 @@ export const SingleVideo = () => {
           const { _id, thumbnail, title, creator } = video;
           return (
             <div
+              key={_id}
               className="suggest__video"
               onClick={() => navigate(`/single/${_id}`)}
             >

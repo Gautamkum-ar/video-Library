@@ -1,0 +1,90 @@
+
+
+
+.play__list{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    flex-wrap: wrap;
+    padding: 1rem;
+
+}
+
+.play__list__main{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    flex-wrap: wrap;
+    padding: 1rem;
+}
+
+.play__list .playlist__card{
+    display: flex;
+    flex-direction: column;
+    width: 15rem;
+    height: 12rem;
+    margin: 1rem;
+    box-shadow: 1px 1px 10px #444;
+    border-radius: 5px;
+    overflow:hidden;
+}
+
+.play__list .playlist__card h4{
+    margin: auto;
+    width: 90%;
+}
+.play__list .playlist__card p{
+    margin: auto;
+    width: 90%;
+    color: #555;
+}
+.create__new__playlist{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 4rem;
+    height: 4rem;
+    font-size: 2rem;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.modal__container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 15rem;
+    height: 12rem;
+    margin: auto 1rem;
+    padding: 1rem;
+    box-shadow: 1px 1px 10px #444;
+    border-radius: 5px;
+
+}
+
+.modal__container input{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    height: 2rem;
+    padding: 0.5rem;
+    margin: auto;
+}
+
+.modal__container h3{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    margin: auto;
+}
+
+.modal__container button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: 1.5rem;
+    margin: auto;
+}

@@ -1,9 +1,10 @@
 import { Layout } from "../../component/layout/Layout";
+import { PlaylistVideo } from "../../component/playlist/Playlistvideo";
 
 export const Playlist = () => {
   return (
     <div className="playlist__container">
-      <Layout children={"hello"} />
+      <Layout children={<PlaylistVideo />} />
     </div>
   );
 };
