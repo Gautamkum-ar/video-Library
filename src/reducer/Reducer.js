@@ -10,7 +10,7 @@ export const reducerFunction = (state, { payload, type }) => {
     case "REMOVE_FROM_WATCHLATER": {
       return {
         ...state,
-        watchLaterData: state.watchLaterData.filter(
+        watchLaterData: state?.watchLaterData.filter(
           (video) => video._id !== payload
         ),
       };
@@ -18,8 +18,7 @@ export const reducerFunction = (state, { payload, type }) => {
     case "RELOAD": {
       return {
         ...state,
-        watchLaterData: payload.watchlater,
-        // playlistData: payload.playlist,
+        watchLaterData: payload,
       };
     }
 

@@ -43,16 +43,14 @@ export const VideoProvider = ({ children }) => {
     return findVideo ? true : false;
   };
 
-  useEffect(() => {
-    const watchlater = JSON.parse(localStorage.getItem("watchlater"));
-    const playlist = JSON.parse(localStorage.getItem("playlist"));
-    dispatch({
-      type: "RELOAD",
-      payload: { watchlater },
-    });
-  }, []);
+  //   useEffect(() => {
+  //     dispatch({
+  //       type: "RELOAD",
+  //       payload: JSON.parse(localStorage.getItem("watchlater")),
+  //     });
+  //   }, []);
 
-  console.log(state.singlePlaylist);
+  //   console.log(state.watchLaterData);
   return (
     <VideoContext.Provider
       value={{

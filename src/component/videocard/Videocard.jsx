@@ -18,7 +18,7 @@ export const VideoCard = ({ video }) => {
               dispatch({ type: "REMOVE_FROM_WATCHLATER", payload: _id });
               localStorage.setItem(
                 "watchlater",
-                JSON.stringify(state.watchLaterData)
+                JSON.stringify(state?.watchLaterData)
               );
             }}
           />
